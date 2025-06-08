@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rama Bhadra Sastry Kolluri - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Inter', sans-serif;
+line-height: 1.6;
+color: #333;
+overflow-x: hidden;
+background: #ffffff;
+}
+
+/* Interactive Background */
+.bg-canvas {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.05;
+}
+
+/* Navigation */
+nav {
+position: fixed;
+top: 0;
+width: 100%;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+z-index: 1000;
+padding: 1rem 0;
+border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 2rem;
+}
+
+.logo {
+font-weight: 700;
+font-size: 1.5rem;
+color: #000;
+}
+
+.nav-links {
+display: flex;
+list-style: none;
+gap: 2rem;
+}
+
+.nav-links a {
+text-decoration: none;
+color: #666;
+font-weight: 400;
+transition: color 0.3s;
+position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+color: #000;
+}
+
+.nav-links a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -5px;
+left: 0;
+background: #000;
+transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+width: 100%;
+}
+
+/* Sections */
+section {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 6rem 2rem 2rem;
+position: relative;
+}
+
+.container {
+max-width: 1200px;
+width: 100%;
+}
+
+/* Hero Section */
+.hero {
+text-align: center;
+background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.profile-container {
+position: relative;
+margin-bottom: 3rem;
+}
+
+.profile-image {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+margin: 0 auto 2rem;
+border: 3px solid #e9ecef;
+background: #f8f9fa;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 4rem;
+color: #adb5bd;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+transform: scale(1.05);
+border-color: #000;
+}
+
+.profile-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 50%;
+}
+
+.profile-image::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, transparent, rgba(0,0,0,0.05), transparent);
+transform: rotate(45deg);
+animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.hero h1 {
+font-size: 3.5rem;
+font-weight: 700;
+margin-bottom: 1rem;
+color: #000;
+letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+font-size: 1.3rem;
+color: #666;
+margin-bottom: 1rem;
+font-weight: 400;
+}
+
+.hero-description {
+font-size: 1.1rem;
+color: #888;
+max-width: 700px;
+margin: 0 auto 2rem;
+line-height: 1.7;
+}
+
+/* Bio Section */
+.bio {
+background: #ffffff;
+}
+
+.bio-content {
+display: grid;
+grid-template-columns: 2fr 1fr;
+gap: 4rem;
+align-items: center;
+}
+
+.bio-text h2 {
+font-size: 2.5rem;
+color: #000;
+margin-bottom: 2rem;
+font-weight: 600;
+}
+
+.bio-text p {
+font-size: 1.1rem;
+line-height: 1.8;
+color: #666;
+margin-bottom: 1.5rem;
+}
+
+.bio-visual {
+position: relative;
+height: 400px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.floating-shapes {
+position: absolute;
+width: 100%;
+height: 100%;
+}
+
+.shape {
+position: absolute;
+background: #f8f9fa;
+border: 2px solid #e9ecef;
+transition: all 0.3s ease;
+}
+
+.shape:nth-child(1) {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+top: 20%;
+left: 20%;
+animation: float 6s ease-in-out infinite;
+}
+
+.shape:nth-child(2) {
+width: 80px;
+height: 80px;
+top: 60%;
+right: 20%;
+animation: float 8s ease-in-out infinite reverse;
+}
+
+.shape:nth-child(3) {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+bottom: 20%;
+left: 50%;
+animation: float 7s ease-in-out infinite;
+}
+
+.shape:hover {
+background: #000;
+transform: scale(1.2);
+}
+
+@keyframes float {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-20px); }
+}
+
+/* Skills Section */
+.skills {
+background: #f8f9fa;
+}
+
+.skills-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+margin-top: 3rem;
+}
+
+.skill-card {
+background: #ffffff;
+padding: 2.5rem;
+border-radius: 8px;
+border: 1px solid #e9ecef;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.skill-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(0,0,0,0.02), transparent);
+transition: left 0.5s ease;
+}
+
+.skill-card:hover::before {
+left: 100%;
+}
+
+.skill-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+border-color: #000;
+}
+
+.skill-card h3 {
+font-size: 1.3rem;
+color: #000;
+margin-bottom: 1.5rem;
+font-weight: 600;
+}
+
+.skill-list {
+list-style: none;
+}
+
+.skill-list li {
+background: #f8f9fa;
+margin: 0.5rem 0;
+padding: 0.8rem 1rem;
+border-radius: 4px;
+font-size: 0.9rem;
+color: #666;
+border-left: 3px solid transparent;
+transition: all 0.3s ease;
+}
+
+.skill-list li:hover {
+border-left-color: #000;
+background: #e9ecef;
+}
+
+/* Experience Section */
+.experience {
+background: #ffffff;
+}
+
+.timeline {
+position: relative;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.timeline::after {
+content: '';
+position: absolute;
+width: 2px;
+background: #e9ecef;
+top: 0;
+bottom: 0;
+left: 50%;
+margin-left: -1px;
+}
+
+.timeline-item {
+padding: 10px 40px;
+position: relative;
+background-color: inherit;
+width: 50%;
+}
+
+.timeline-item::after {
+content: '';
+position: absolute;
+width: 20px;
+height: 20px;
+right: -10px;
+background: #ffffff;
+border: 3px solid #000;
+top: 15px;
+border-radius: 50%;
+z-index: 1;
+transition: all 0.3s ease;
+}
+
+.timeline-item:hover::after {
+transform: scale(1.3);
+background: #000;
+}
+
+.left {
+left: 0;
+}
+
+.right {
+left: 50%;
+}
+
+.right::after {
+left: -10px;
+}
+
+.timeline-content {
+padding: 30px;
+background: #f8f9fa;
+position: relative;
+border-radius: 8px;
+border: 1px solid #e9ecef;
+transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+background: #ffffff;
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+transform: translateY(-5px);
+}
+
+.timeline-content h3 {
+color: #000;
+margin-bottom: 0.5rem;
+font-weight: 600;
+}
+
+.timeline-content h4 {
+color: #666;
+margin-bottom: 0.5rem;
+font-weight: 500;
+}
+
+.timeline-content .date {
+color: #888;
+font-size: 0.9rem;
+margin-bottom: 1rem;
+}
+
+.timeline-content ul {
+list-style: none;
+margin-top: 1rem;
+}
+
+.timeline-content li {
+margin: 0.8rem 0;
+padding-left: 1rem;
+position: relative;
+color: #666;
+line-height: 1.6;
+}
+
+.timeline-content li::before {
+content: '';
+width: 4px;
+height: 4px;
+background: #000;
+border-radius: 50%;
+position: absolute;
+left: 0;
+top: 0.7rem;
+}
+
+/* Projects Section */
+.projects {
+background: #000;
+color: #ffffff;
+}
+
+.projects .section-header h2 {
+color: #ffffff;
+}
+
+.projects .section-header p {
+color: #adb5bd;
+}
+
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 2rem;
+margin-top: 3rem;
+}
+
+.project-card {
+background: #111;
+padding: 2.5rem;
+border-radius: 8px;
+border: 1px solid #333;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.project-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+transition: left 0.5s ease;
+}
+
+.project-card:hover::before {
+left: 100%;
+}
+
+.project-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+border-color: #666;
+}
+
+.project-card h3 {
+margin-bottom: 1rem;
+font-size: 1.4rem;
+color: #ffffff;
+}
+
+.project-card p {
+margin-bottom: 1rem;
+line-height: 1.6;
+color: #adb5bd;
+}
+
+.tech-tags {
+margin-top: 1.5rem;
+}
+
+.tech-tag {
+background: #333;
+color: #ffffff;
+padding: 0.4rem 0.8rem;
+border-radius: 4px;
+font-size: 0.8rem;
+margin-right: 0.5rem;
+margin-bottom: 0.5rem;
+display: inline-block;
+border: 1px solid #444;
+transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+background: #ffffff;
+color: #000;
+}
+
+.modal-temp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-temp > div {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.modal-temp h3 {
+    margin-top: 0;
+    color: #000;
+}
+
+.modal-temp textarea {
+    width: 100%;
+    height: 200px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.modal-temp button {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-temp button:hover {
+    background: #333;
+}
+
+.modal-temp button:last-child {
+    background: #666;
+}
+
+.modal-temp button:last-child:hover {
+    background: #888;
+}
+
+/* Photography Section */
+.photography {
+background: #f8f9fa;
+}
+
+.photo-upload-section {
+margin-top: 2rem;
+text-align: center;
+}
+
+.upload-area {
+border: 2px dashed #adb5bd;
+border-radius: 8px;
+padding: 3rem;
+margin: 2rem 0;
+background: #ffffff;
+transition: all 0.3s ease;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+
+.upload-area::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(0,0,0,0.02), transparent);
+transition: left 0.5s ease;
+}
+
+.upload-area:hover::before {
+left: 100%;
+}
+
+.upload-area:hover {
+border-color: #000;
+background: #f8f9fa;
+}
+
+.upload-area.dragover {
+border-color: #000;
+background: #e9ecef;
+transform: scale(1.02);
+}
+
+#photoInput {
+display: none;
+}
+
+.upload-btn {
+background: #000;
+color: #ffffff;
+border: none;
+padding: 1rem 2rem;
+border-radius: 4px;
+cursor: pointer;
+font-size: 1rem;
+margin-top: 1rem;
+transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+background: #333;
+transform: translateY(-2px);
+}
+
+.photo-gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+margin-top: 3rem;
+}
+
+.photo-item {
+aspect-ratio: 1;
+background: #e9ecef;
+border-radius: 8px;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+border: 1px solid #dee2e6;
+transition: all 0.3s ease;
+}
+
+.photo-item:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.photo-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+transform: scale(1.1);
+}
+
+.photo-item .delete-btn {
+position: absolute;
+top: 10px;
+right: 10px;
+background: rgba(0, 0, 0, 0.7);
+color: #ffffff;
+border: none;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+cursor: pointer;
+opacity: 0;
+transition: opacity 0.3s ease;
+font-size: 0.8rem;
+}
+
+.photo-item:hover .delete-btn {
+opacity: 1;
+}
+
+.photo-placeholder {
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+color: #adb5bd;
+height: 100%;
+}
+
+/* Resume Section */
+.resume {
+background: #ffffff;
+padding: 4rem 2rem;
+}
+
+.resume-container {
+max-width: 900px;
+margin: 0 auto;
+background: #f8f9fa;
+padding: 3rem;
+border-radius: 8px;
+border: 1px solid #e9ecef;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.resume-header {
+text-align: center;
+margin-bottom: 3rem;
+padding-bottom: 2rem;
+border-bottom: 2px solid #000;
+}
+
+.resume-header h3 {
+font-size: 2.5rem;
+color: #000;
+margin-bottom: 0.5rem;
+font-weight: 700;
+}
+
+.resume-contact {
+color: #666;
+margin-bottom: 0.5rem;
+font-size: 1rem;
+}
+
+.resume-contact a {
+color: #666;
+text-decoration: none;
+}
+
+.resume-contact a:hover {
+color: #000;
+}
+
+.resume-section {
+margin-bottom: 2.5rem;
+}
+
+.resume-section h4 {
+font-size: 1.3rem;
+color: #000;
+margin-bottom: 1.5rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid #e9ecef;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+font-weight: 600;
+}
+
+.resume-item {
+margin-bottom: 2rem;
+padding: 1.5rem;
+background: #ffffff;
+border-radius: 6px;
+border-left: 4px solid #000;
+}
+
+.resume-item h5 {
+color: #000;
+font-weight: 600;
+margin-bottom: 0.5rem;
+font-size: 1.1rem;
+}
+
+.resume-item .company {
+color: #666;
+font-weight: 500;
+margin-bottom: 0.25rem;
+}
+
+.resume-item .date {
+color: #888;
+font-size: 0.9rem;
+margin-bottom: 1rem;
+}
+
+.resume-item ul {
+list-style: none;
+margin-left: 0;
+}
+
+.resume-item li {
+color: #666;
+margin-bottom: 0.8rem;
+position: relative;
+padding-left: 1.5rem;
+line-height: 1.6;
+}
+
+.resume-item li::before {
+content: '';
+width: 6px;
+height: 6px;
+background: #000;
+border-radius: 50%;
+position: absolute;
+left: 0;
+top: 0.6rem;
+}
+
+.skills-list {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+margin-top: 1rem;
+}
+
+.skill-badge {
+background: #000;
+color: #ffffff;
+padding: 0.4rem 0.8rem;
+border-radius: 4px;
+font-size: 0.85rem;
+font-weight: 500;
+}
+
+.download-btn {
+display: inline-block;
+background: #000;
+color: #ffffff;
+padding: 1rem 2rem;
+border-radius: 4px;
+text-decoration: none;
+font-weight: 500;
+margin-top: 2rem;
+transition: all 0.3s ease;
+text-align: center;
+}
+
+.download-btn:hover {
+background: #333;
+transform: translateY(-2px);
+}
+
+/* Contact Section */
+.contact {
+background: #000;
+color: #ffffff;
+text-align: center;
+}
+
+.contact .section-header h2 {
+color: #ffffff;
+}
+
+.contact .section-header p {
+color: #adb5bd;
+}
+
+.contact-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+margin-top: 3rem;
+}
+
+.contact-item {
+background: #111;
+padding: 2.5rem;
+border-radius: 8px;
+border: 1px solid #333;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.contact-item::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+transition: left 0.5s ease;
+}
+
+.contact-item:hover::before {
+left: 100%;
+}
+
+.contact-item:hover {
+transform: translateY(-5px);
+border-color: #666;
+}
+
+.contact-item h4 {
+margin-bottom: 1rem;
+color: #ffffff;
+font-size: 1.2rem;
+}
+
+.contact-item a {
+color: #adb5bd;
+text-decoration: none;
+transition: color 0.3s ease;
+font-size: 1rem;
+}
+
+.contact-item a:hover {
+color: #ffffff;
+}
+
+.contact-item p {
+color: #adb5bd;
+margin: 0;
+}
+
+/* Section Headers */
+.section-header {
+text-align: center;
+margin-bottom: 3rem;
+}
+
+.section-header h2 {
+font-size: 2.5rem;
+font-weight: 600;
+margin-bottom: 1rem;
+color: #000;
+}
+
+.section-header p {
+font-size: 1.1rem;
+color: #666;
+max-width: 600px;
+margin: 0 auto;
+}
+
+/* Modal for Photo Viewer */
+.photo-modal {
+display: none;
+position: fixed;
+z-index: 2000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+}
+
+.close {
+position: absolute;
+top: 15px;
+right: 35px;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close:hover {
+color: #bbb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.nav-container {
+flex-direction: column;
+gap: 1rem;
+}
+
+.nav-links {
+gap: 1rem;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.hero h1 {
+font-size: 2.5rem;
+}
+
+.bio-content {
+grid-template-columns: 1fr;
+text-align: center;
+}
+
+.timeline::after {
+left: 31px;
+}
+
+.timeline-item {
+width: 100%;
+padding-left: 70px;
+padding-right: 25px;
+}
+
+.timeline-item::after {
+left: 15px;
+}
+
+.left::after,
+.right::after {
+left: 15px;
+}
+
+.right {
+left: 0%;
+}
+
+.section-header h2 {
+font-size: 2rem;
+}
+
+.skills-grid,
+.projects-grid {
+grid-template-columns: 1fr;
+}
+
+.resume-container {
+padding: 2rem;
+}
+
+.contact-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+<!-- Interactive Background Canvas -->
+<canvas class="bg-canvas" id="backgroundCanvas"></canvas>
+
+<!-- Navigation -->
+<nav>
+<div class="nav-container">
+<div class="logo">RK</div>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#bio">About</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#photography">Photography</a></li>
+<li><a href="#resume">Resume</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+    <div class="profile-container">
+    <div class="profile-image">
+    <img src="assets/profilepic.jpg" alt="Rama Bhadra Sastry Kolluri" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    </div>
+    </div>
+    <h1>Rama Bhadra Sastry Kolluri</h1>
+    <p class="hero-subtitle">Software Engineer | Full-Stack Developer | Innovation Enthusiast</p>
+    <p class="hero-description">2+ years of experience in scalable application design, microservices architecture, and modern web technologies. Passionate about creating innovative solutions that drive business success.</p>
+    </div>
+    </section>
+
+<!-- Bio Section -->
+<section id="bio" class="bio">
+<div class="container">
+<div class="bio-content">
+<div class="bio-text">
+<h2>About Me</h2>
+<p>I am a passionate Software Engineer with 2+ years of experience in full-stack development, specializing in scalable application design, microservices architecture, and modern web technologies. Currently pursuing my Master's in Software Engineering at the University of Maryland, Baltimore County.</p>
+<p>My expertise spans across React.js, Node.js, and big data platforms with a strong foundation in agile methodologies. I have a proven track record of developing innovative solutions, leading technical documentation, and collaborating with cross-functional teams to deliver high-quality software systems.</p>
+<p>I'm driven by the challenge of creating solutions that meet customer requirements and support highly available environments, always focusing on performance optimization and user experience enhancement.</p>
+</div>
+<div class="bio-visual">
+<div class="floating-shapes">
+<div class="shape"></div>
+<div class="shape"></div>
+<div class="shape"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="skills">
+<div class="container">
+<div class="section-header">
+<h2>Education</h2>
+<p>Academic foundation building my expertise</p>
+</div>
+<div class="skills-grid">
+<div class="skill-card">
+<h3>Master of Science in Software Engineering</h3>
+<p><strong>University of Maryland, Baltimore County (UMBC)</strong></p>
+<p>Baltimore, MD | Expected: May 2025</p>
+</div>
+<div class="skill-card">
+<h3>Bachelor of Technology in Engineering</h3>
+<p><strong>Gayatri Vidya Parishad College of Engineering</strong></p>
+<p>Visakhapatnam, India | Graduated: May 2021</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="experience">
+<div class="container">
+<div class="section-header">
+<h2>Technical Skills</h2>
+<p>Comprehensive technical expertise across modern technologies</p>
+</div>
+<div class="skills-grid">
+<div class="skill-card">
+<h3>Programming Languages & Frameworks</h3>
+<ul class="skill-list">
+<li>JavaScript (ES6+)</li>
+<li>TypeScript</li>
+<li>Python</li>
+<li>React.js</li>
+<li>AngularJS</li>
+<li>Node.js</li>
+<li>Express.js</li>
+</ul>
+</div>
+<div class="skill-card">
+<h3>Architecture & Design</h3>
+<ul class="skill-list">
+<li>Microservices Architecture</li>
+<li>RESTful APIs</li>
+<li>Full-Stack Development</li>
+<li>System Design</li>
+</ul>
+</div>
+<div class="skill-card">
+<h3>Data & Analytics</h3>
+<ul class="skill-list">
+<li>MongoDB</li>
+<li>MySQL</li>
+<li>Big Data Processing</li>
+<li>Data Pipeline Development</li>
+<li>Analytics</li>
+</ul>
+</div>
+<div class="skill-card">
+<h3>DevOps & Engineering</h3>
+<ul class="skill-list">
+<li>CI/CD Pipelines</li>
+<li>Docker</li>
+<li>Jenkins</li>
+<li>Git & GitHub</li>
+<li>Agile (Scrum & Kanban)</li>
+<li>Test-Driven Development</li>
+</ul>
+</div>
+<div class="skill-card">
+<h3>Networking & Cloud</h3>
+<ul class="skill-list">
+<li>SDN (Software-Defined Networking)</li>
+<li>API Integration</li>
+<li>Cloud Technologies</li>
+<li>System Protocols</li>
+</ul>
+</div>
+<div class="skill-card">
+<h3>Documentation & Communication</h3>
+<ul class="skill-list">
+<li>Technical Writing</li>
+<li>System Documentation</li>
+<li>Requirements Analysis</li>
+<li>Cross-functional Collaboration</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience">
+<div class="container">
+<div class="section-header">
+<h2>Professional Experience</h2>
+<p>Building solutions and driving innovation</p>
+</div>
+<div class="timeline">
+<div class="timeline-item left">
+<div class="timeline-content">
+<h3>Grading Assistant</h3>
+<h4>University of Maryland, Baltimore County (UMBC)</h4>
+<div class="date">September 2023 - Present</div>
+<ul>
+<li>Evaluated 50+ technical assignments and engineering projects per semester, improving student performance by 20%</li>
+<li>Delivered guest lectures on software engineering principles and system design, achieving 95% satisfaction rating</li>
+<li>Collaborated with faculty to refine curriculum and engineering processes, leading to 15% improvement in course effectiveness</li>
+<li>Developed agile workflow solutions for Electronic Arts collaboration project, enhancing team productivity by 25%</li>
+</ul>
+</div>
+</div>
+<div class="timeline-item right">
+<div class="timeline-content">
+<h3>Program Analyst</h3>
+<h4>Cognizant Technology Solutions</h4>
+<div class="date">October 2021 - November 2022</div>
+<ul>
+<li><li>Engineered scalable web applications using React.js and AngularJS, supporting high-availability environments and reducing customer complaints by 20%</li>
+                <li>Architected and implemented microservices solutions, decreasing system rendering delays by 30% for enhanced user experience</li>
+                <li>Developed modular, reusable software components following established engineering practices, reducing development time by 20%</li>
+                <li>Implemented automated CI/CD pipelines and deployment strategies, improving deployment efficiency by 25%</li>
+                <li>Conducted comprehensive testing, debugging, and system validation, reducing production defects by 30%</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+<div class="container">
+    <div class="section-header">
+        <h2>Featured Projects</h2>
+        <p>Innovative solutions and technical achievements</p>
+    </div>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>LibHunt AI - Intelligent Library Discovery Platform</h3>
+            <p>Capstone project that consolidated 4+ separate developer tools into a unified platform, reducing library research time by 75%. Features advanced search algorithms with intelligent filtering and real-time data synchronization.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB Atlas</span>
+                <span class="tech-tag">JWT Authentication</span>
+                <span class="tech-tag">Bcrypt Security</span>
+                <span class="tech-tag">Vercel</span>
+                <span class="tech-tag">Render</span>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>MERN Stack Web Application - Verizon Collaboration</h3>
+            <p>High-availability application supporting 1,000+ concurrent users in production. Designed comprehensive RESTful API architecture, reducing data retrieval time by 30% with responsive UI design.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">RESTful APIs</span>
+                <span class="tech-tag">Automated Testing</span>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>Remote Area Medical App - MEAN Stack Platform</h3>
+            <p>Enterprise-grade healthcare platform serving 10,000+ active users. Optimized system protocols and data flows, cutting application latency by 30% with scalable architecture for distributed environments.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">AngularJS</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Healthcare Systems</span>
+                <span class="tech-tag">Distributed Architecture</span>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>Software Development Optimization - Electronic Arts</h3>
+            <p>Formulated agile-based engineering workflow and process improvements, enhancing team productivity by 25%. Integrated advanced CI/CD pipeline solutions, decreasing deployment times by 20%.</p>
+            <div class="tech-tags">
+                <span class="tech-tag">Agile Methodologies</span>
+                <span class="tech-tag">CI/CD Pipelines</span>
+                <span class="tech-tag">Process Optimization</span>
+                <span class="tech-tag">Team Leadership</span>
+                <span class="tech-tag">Technical Research</span>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Photography Section -->
+<section id="photography" class="photography">
+    <div class="container">
+        <div class="section-header">
+            <h2>Photography Portfolio</h2>
+            <p>Capturing moments and telling stories through the lens</p>
+        </div>
+        
+        <div class="photo-upload-section">
+            <div class="upload-area" onclick="document.getElementById('photoInput').click()" id="uploadArea">
+                <div class="photo-placeholder">📷</div>
+                <p>Click here or drag and drop photos to upload</p>
+                <button class="upload-btn" type="button">Choose Photos</button>
+            </div>
+            <input type="file" id="photoInput" accept="image/*" multiple>
+        </div>
+        
+        <!-- Photo gallery with pre-loaded images -->
+        <div class="photo-gallery" id="photoGallery">
+            <!-- Add your existing images here - replace 'image1.jpg', 'image2.jpg' etc. with your actual image filenames -->
+            
+            <div class="photo-item" data-photo-id="photo-6">
+                <img src="assets/IMG_0011 2.jpg" alt="Photography Sample 6" onclick="openModal(this.src)">
+                <button class="delete-btn" onclick="deletePhoto(this)">×</button>
+            </div>
+
+            
+           
+        </div>
+    </div>
+</section>
+
+<!-- Resume Section -->
+<section id="resume" class="resume">
+<div class="container">
+    <div class="section-header">
+        <h2>Resume</h2>
+        <p>Comprehensive overview of my professional journey</p>
+    </div>
+    
+    <div class="resume-container">
+        <div class="resume-header">
+            <h3>Rama Bhadra Sastry Kolluri</h3>
+            <div class="resume-contact">+1 667-433-1296</div>
+            <div class="resume-contact"><a href="mailto:rbsastryk@gmail.com">rbsastryk@gmail.com</a></div>
+            <div class="resume-contact"><a href="https://www.linkedin.com/in/rama-bhadra-sastry-kolluri/" target="_blank">LinkedIn Profile</a></div>
+            <div class="resume-contact"><a href="https://github.com/KRBSASTRY" target="_blank">GitHub Profile</a></div>
+        </div>
+        
+        <div class="resume-section">
+            <h4>Professional Summary</h4>
+            <p>Software Engineer with 2+ years of experience in full-stack development, specializing in scalable application design, microservices architecture, and modern web technologies. Proven expertise in React.js, Node.js, and big data platforms with a strong foundation in agile methodologies. Demonstrated ability to develop innovative solutions, lead technical documentation, and collaborate with cross-functional teams to deliver high-quality software systems that meet customer requirements and support highly available environments.</p>
+        </div>
+        
+        <div class="resume-section">
+            <h4>Education</h4>
+            <div class="resume-item">
+                <h5>Master of Science in Software Engineering</h5>
+                <div class="company">University of Maryland, Baltimore County (UMBC) – Baltimore, MD</div>
+                <div class="date">Expected: May 2025</div>
+            </div>
+            <div class="resume-item">
+                <h5>Bachelor of Technology in Engineering</h5>
+                <div class="company">Gayatri Vidya Parishad College of Engineering – Visakhapatnam, India</div>
+                <div class="date">May 2021</div>
+            </div>
+        </div>
+        
+        <div class="resume-section">
+            <h4>Professional Experience</h4>
+            <div class="resume-item">
+                <h5>Grading Assistant</h5>
+                <div class="company">University of Maryland, Baltimore County (UMBC) – Baltimore, MD</div>
+                <div class="date">September 2023 – Present</div>
+                <ul>
+                    <li>Evaluated 50+ technical assignments and engineering projects per semester, improving student performance by 20%</li>
+                    <li>Delivered guest lectures on software engineering principles and system design, achieving 95% satisfaction rating</li>
+                    <li>Collaborated with faculty to refine curriculum and engineering processes, leading to 15% improvement in course effectiveness</li>
+                    <li>Developed agile workflow solutions for Electronic Arts collaboration project, enhancing team productivity by 25%</li>
+                </ul>
+            </div>
+            <div class="resume-item">
+                <h5>Program Analyst</h5>
+                <div class="company">Cognizant Technology Solutions – Hyderabad, India</div>
+                <div class="date">October 2021 – November 2022</div>
+                <ul>
+                    <li>Engineered scalable web applications using React.js and AngularJS, supporting high-availability environments and reducing customer complaints by 20%</li>
+                    <li>Architected and implemented microservices solutions, decreasing system rendering delays by 30% for enhanced user experience</li>
+                    <li>Developed modular, reusable software components following established engineering practices, reducing development time by 20%</li>
+                    <li>Implemented automated CI/CD pipelines and deployment strategies, improving deployment efficiency by 25%</li>
+                    <li>Conducted comprehensive testing, debugging, and system validation, reducing production defects by 30%</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="resume-section">
+            <h4>Technical Skills</h4>
+            <div class="skills-list">
+                <span class="skill-badge">JavaScript (ES6+)</span>
+                <span class="skill-badge">TypeScript</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">React.js</span>
+                <span class="skill-badge">AngularJS</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Express.js</span>
+                <span class="skill-badge">MongoDB</span>
+                <span class="skill-badge">MySQL</span>
+                <span class="skill-badge">Microservices</span>
+                <span class="skill-badge">RESTful APIs</span>
+                <span class="skill-badge">CI/CD</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">Jenkins</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Agile</span>
+            </div>
+        </div>
+        
+        <a href="#" class="download-btn" onclick="downloadResume()">Download PDF Resume</a>
+    </div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+<div class="container">
+    <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Let's connect and explore opportunities together</p>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-item">
+            <h4>Email</h4>
+            <a href="mailto:rbsastryk@gmail.com">rbsastryk@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <h4>Phone</h4>
+            <a href="tel:+16674331296">+1 667-433-1296</a>
+        </div>
+        <div class="contact-item">
+            <h4>LinkedIn</h4>
+            <a href="https://www.linkedin.com/in/rama-bhadra-sastry-kolluri/" target="_blank">Connect with me</a>
+        </div>
+        <div class="contact-item">
+            <h4>GitHub</h4>
+            <a href="https://github.com/KRBSASTRY" target="_blank">View my repositories</a>
+        </div>
+        <div class="contact-item">
+            <h4>Location</h4>
+            <p>Baltimore, MD</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Photo Modal -->
+<div id="photoModal" class="photo-modal">
+<span class="close">&times;</span>
+<img class="modal-content" id="modalImage">
+</div>
+
+<script>
+// Interactive background animation
+const canvas = document.getElementById('backgroundCanvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 1;
+    }
+
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#000';
+        ctx.fill();
+    }
+}
+
+const particles = [];
+for (let i = 0; i < 50; i++) {
+    particles.push(new Particle());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+    });
+
+    // Draw connections
+    particles.forEach((particle, i) => {
+        particles.slice(i + 1).forEach(otherParticle => {
+            const dx = particle.x - otherParticle.x;
+            const dy = particle.y - otherParticle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 100) {
+                ctx.beginPath();
+                ctx.moveTo(particle.x, particle.y);
+                ctx.lineTo(otherParticle.x, otherParticle.y);
+                ctx.strokeStyle = `rgba(0, 0, 0, ${0.1 - distance / 1000})`;
+                ctx.stroke();
+            }
+        });
+    });
+
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+animate();
+
+// Navigation scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.style.background = 'rgba(255, 255, 255, 0.98)';
+    } else {
+        nav.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Active navigation link highlighting
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Hero profile image upload
+document.getElementById('heroPhotoInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const profileImage = document.querySelector('.profile-image');
+            profileImage.innerHTML = `<img src="${e.target.result}" alt="Profile Photo">`;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+// Photography section functionality
+const photoInput = document.getElementById('photoInput');
+const uploadArea = document.getElementById('uploadArea');
+const photoGallery = document.getElementById('photoGallery');
+
+// Drag and drop functionality
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    const files = Array.from(e.dataTransfer.files);
+    handleFiles(files);
+});
+
+photoInput.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files);
+    handleFiles(files);
+});
+
+function handleFiles(files) {
+    files.forEach(file => {
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const photoId = 'photo-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                displayPhoto(photoId, e.target.result, file.name);
+                generatePermanentPhotoCode(photoId, e.target.result, file.name);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+function displayPhoto(id, src, name) {
+    const photoItem = document.createElement('div');
+    photoItem.className = 'photo-item';
+    photoItem.setAttribute('data-photo-id', id);
+    photoItem.innerHTML = `
+        <img src="${src}" alt="${name}" onclick="openModal('${src}')">
+        <button class="delete-btn" onclick="deletePhoto(this)">×</button>
+    `;
+    photoGallery.appendChild(photoItem);
+}
+
+function generatePermanentPhotoCode(id, src, name) {
+    // Generate HTML code that can be permanently added to the portfolio
+    const photoHTML = `
+        <div class="photo-item" data-photo-id="${id}">
+            <img src="${src}" alt="${name}" onclick="openModal(this.src)">
+            <button class="delete-btn" onclick="deletePhoto(this)">×</button>
+        </div>`;
+    
+    // Show the user the code to add permanently
+    console.log('Add this HTML code to your photo gallery for permanent storage:');
+    console.log(photoHTML);
+    
+    // Create a temporary modal to show the code
+    showPermanentCodeModal(photoHTML, name);
+}
+
+function showPermanentCodeModal(htmlCode, fileName) {
+    // Create modal to display the permanent code
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    `;
+    
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 90%;
+        overflow: auto;
+    `;
+    
+    modalContent.innerHTML = `
+        <h3>Photo Added Successfully!</h3>
+        <p><strong>File:</strong> ${fileName}</p>
+        <p>To make this photo permanent in your portfolio, copy the code below and paste it into your HTML file within the photo gallery section:</p>
+        <textarea readonly style="width: 100%; height: 200px; font-family: monospace; font-size: 12px; padding: 10px; border: 1px solid #ccc; margin: 10px 0;">${htmlCode}</textarea>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="copyToClipboard('${htmlCode.replace(/'/g, "\\'")}'); this.textContent='Copied!'" style="background: #000; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Copy Code</button>
+            <button onclick="this.closest('.modal-temp').remove()" style="background: #666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Close</button>
+        </div>
+    `;
+    
+    modal.className = 'modal-temp';
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        console.log('Code copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    });
+}
+
+function deletePhoto(element) {
+    const photoItem = element.parentElement;
+    const photoId = photoItem.getAttribute('data-photo-id');
+    
+    // Confirm deletion
+    if (confirm('Are you sure you want to delete this photo?')) {
+        photoItem.remove();
+        console.log(`Photo ${photoId} removed. If this was a permanent photo, remember to remove it from your HTML code as well.`);
+    }
+}
+
+// Modal functionality for viewing photos
+function openModal(imageSrc) {
+    const modal = document.getElementById('photoModal') || createPhotoModal();
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+}
+
+function createPhotoModal() {
+    const modal = document.createElement('div');
+    modal.id = 'photoModal';
+    modal.className = 'photo-modal';
+    modal.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    `;
+    document.body.appendChild(modal);
+    
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    return modal;
+}
+
+function closeModal() {
+    const modal = document.getElementById('photoModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Initialize existing photos with click handlers
+document.addEventListener('DOMContentLoaded', function() {
+    const existingPhotos = photoGallery.querySelectorAll('.photo-item img');
+    existingPhotos.forEach(img => {
+        img.onclick = () => openModal(img.src);
+    });
+    
+    const existingDeleteBtns = photoGallery.querySelectorAll('.photo-item .delete-btn');
+    existingDeleteBtns.forEach(btn => {
+        btn.onclick = () => deletePhoto(btn);
+    });
+});
+
+console.log('Photography section loaded with permanent storage capability!');
+
+
+// Resume download functionality
+function downloadResume() {
+    // In a real implementation, this would download the actual PDF
+    alert('Resume download functionality would be implemented here. For now, please contact me directly for my resume.');
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all sections for animation
+document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
+});
+
+// Mobile menu toggle (if needed for smaller screens)
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('mobile-active');
+}
+
+// Add mobile menu styles if needed
+const style = document.createElement('style');
+style.textContent = `
+    @media (max-width: 768px) {
+        .nav-links.mobile-active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+console.log('Portfolio loaded successfully!');
+// Resume download functionality
+function downloadResume() {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = 'Rama_TMobile_resume.pdf'; // Path to your PDF file
+    link.download = 'Rama_Bhadra_Sastry_Kolluri_Resume.pdf'; // Name for downloaded file
+    link.style.display = 'none';
+    
+    // Add to document, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    console.log('Resume download initiated');
+}
+function fallbackDownload() {
+    // Create a more user-friendly fallback
+    const fallbackMessage = `
+        Resume download is not available in this preview environment. 
+        
+        To get my resume, please:
+        • Contact me directly at rbsastryk@gmail.com
+        • Connect with me on LinkedIn: https://www.linkedin.com/in/rama-bhadra-sastry-kolluri/
+        • View my GitHub: https://github.com/KRBSASTRY
+        
+        I'll be happy to send you my complete resume!
+    `;
+    
+    alert(fallbackMessage);
+    
+    // Optional: Open email client
+    const emailSubject = encodeURIComponent('Request for Resume - Rama Bhadra Sastry Kolluri');
+    const emailBody = encodeURIComponent('Hi Rama,\n\nI would like to request a copy of your resume.\n\nBest regards,');
+    window.open(`mailto:rbsastryk@gmail.com?subject=${emailSubject}&body=${emailBody}`, '_blank');
+}
+
+</script>
+
+</body>
+</html>
