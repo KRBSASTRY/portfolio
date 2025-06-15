@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -23,11 +25,13 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
+
         /* Interactive Background Canvas */
         .bg-canvas {
             position: fixed;
@@ -39,11 +43,13 @@
             opacity: 0.05;
             pointer-events: none;
         }
+
         /* Section Headers */
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
         }
+
         .section-header h2 {
             font-size: 3.5rem;
             font-weight: 700;
@@ -51,12 +57,14 @@
             color: #ffffff;
             letter-spacing: -0.03em;
         }
+
         .section-header p {
             font-size: 1.3rem;
             color: #a0a0a0;
             max-width: 700px;
             margin: 0 auto;
         }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -70,6 +78,7 @@
             border-bottom: 1px solid #333;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -78,17 +87,20 @@
             align-items: center;
             padding: 0 2rem;
         }
+
         .logo {
             font-weight: 700;
             font-size: 1.8rem;
             color: #ffffff;
             letter-spacing: -0.05em;
         }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2.5rem;
         }
+
         .nav-links a {
             text-decoration: none;
             color: #b0b0b0;
@@ -96,11 +108,13 @@
             transition: color 0.3s ease, transform 0.2s ease;
             position: relative;
         }
+
         .nav-links a:hover,
         .nav-links a.active {
             color: #ffffff;
             transform: translateY(-2px);
         }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -111,10 +125,12 @@
             background: #ffffff;
             transition: width 0.3s ease;
         }
+
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
         }
+
         /* Generic Section Styling */
         section {
             min-height: 100vh;
@@ -125,78 +141,97 @@
             position: relative;
         }
 
-        /* HERO SECTION - Full screen image with gradient overlay */
+        /* HERO SECTION - Full screen image that scrolls normally */
         #home {
             min-height: 100vh;
             position: relative;
-            padding: 0;
+            padding: 10px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Hero Image - 100% screen coverage with complete image visibility */
+        /* Hero Image - Complete screen coverage, scrolls normally */
         #heroImage {
             position: absolute;
-            top: 0;
+            top: 10vh;
+            /* Padded down from the top */
             left: 0;
-            width: 100vw; /* 100% horizontal coverage */
-            height: 100vh; /* 100% vertical coverage */
-            object-fit: contain; /* Shows complete image within the 100% bounds */
+            width: 100vw;
+            height: 90vh;
+            /* Adjusted height to maintain proportions */
+            object-fit: cover;
+            /* Fills entire screen */
             object-position: center;
             filter: grayscale(100%);
             z-index: 1;
         }
 
-        /* Gradient Overlay - Creates smooth transition to black at bottom */
+        /* Gradient Overlay - Always visible, animates on scroll */
         .gradient-overlay {
             position: absolute;
-            top: 0;
+            top: 10vh;
+            /* Match the image position */
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                transparent 40%,
-                rgba(0, 0, 0, 0.3) 60%,
-                rgba(0, 0, 0, 0.7) 80%,
-                rgba(0, 0, 0, 0.9) 100%
-            );
+            height: 90vh;
+            /* Match the image height */
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    transparent 30%,
+                    rgba(0, 0, 0, 0.4) 50%,
+                    rgba(0, 0, 0, 0.8) 70%,
+                    rgba(0, 0, 0, 0.95) 100%);
             z-index: 2;
             pointer-events: none;
+            opacity: 0;
         }
 
-        /* Hero Text - Overlay at bottom of image */
+        /* Hero Text - Positioned at bottom, animates on scroll */
         #heroText {
             position: absolute;
-            bottom: 4rem;
+            bottom: 6rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 3;
             text-align: center;
             color: #ffffff;
-            max-width: 800px;
+            max-width: 900px;
             width: 90%;
+            opacity: 0;
         }
 
         #heroText h1 {
-            font-size: 3.5rem; /* Decreased from 4rem (5px reduction) */
-            font-weight: 800;
+            font-size: 4.5rem;
+            font-weight: 900;
             margin-bottom: 2rem;
             color: #ffffff;
             line-height: 1.1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            letter-spacing: -1px;
+            transform: translateY(50px);
         }
 
-        #heroText p {
-            font-size: 1.3rem;
+        #heroText .subtitle {
+            font-size: 1.6rem;
             color: #ffffff;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 300;
+            transform: translateY(30px);
+            opacity: 0;
         }
 
-        #heroText p:last-child {
-            margin-bottom: 0;
+        #heroText .description {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            font-weight: 300;
+            transform: translateY(30px);
+            opacity: 0;
         }
 
         /* Bio Section - Normal section */
@@ -213,22 +248,26 @@
             gap: 5rem;
             align-items: center;
         }
+
         .bio-text {
             flex: 2;
             text-align: left;
         }
+
         .bio-text h2 {
             font-size: 3rem;
             color: #ffffff;
             margin-bottom: 2rem;
             font-weight: 700;
         }
+
         .bio-text p {
             font-size: 1.15rem;
             line-height: 1.8;
             color: #b0b0b0;
             margin-bottom: 1.8rem;
         }
+
         .bio-visual {
             position: relative;
             height: 450px;
@@ -240,19 +279,21 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
             overflow: hidden;
         }
+
         .floating-shapes {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
+
         .about-shape {
             position: absolute;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
             will-change: transform;
         }
-        
+
         /* Triangle - Monochrome Gray */
         .about-shape:nth-child(1) {
             width: 70px;
@@ -263,12 +304,13 @@
             background: #444444;
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         }
+
         .about-shape:nth-child(1):hover {
             background: #666666;
             transform: scale(1.1) rotate(5deg);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
-        
+
         /* Circle - Monochrome Gray */
         .about-shape:nth-child(2) {
             width: 65px;
@@ -279,12 +321,13 @@
             animation: gentleFloat 9s ease-in-out infinite reverse alternate;
             background: #555555;
         }
+
         .about-shape:nth-child(2):hover {
             background: #777777;
             transform: scale(1.15);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
-        
+
         /* Rectangle - Monochrome Gray */
         .about-shape:nth-child(3) {
             width: 80px;
@@ -295,12 +338,13 @@
             background: #3d3d3d;
             border-radius: 8px;
         }
+
         .about-shape:nth-child(3):hover {
             background: #5d5d5d;
             transform: scale(1.1) rotate(-3deg);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
-        
+
         /* Square - Monochrome Gray */
         .about-shape:nth-child(4) {
             width: 60px;
@@ -311,12 +355,13 @@
             background: #4a4a4a;
             border-radius: 8px;
         }
+
         .about-shape:nth-child(4):hover {
             background: #6a6a6a;
             transform: scale(1.2) rotate(10deg);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
-        
+
         /* Pentagon - Monochrome Gray */
         .about-shape:nth-child(5) {
             width: 70px;
@@ -327,37 +372,45 @@
             background: #3a3a3a;
             clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
         }
+
         .about-shape:nth-child(5):hover {
             background: #5a5a5a;
             transform: scale(1.1) rotate(-5deg);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
-        
+
         @keyframes gentleFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) translateX(0px) rotate(0deg);
             }
+
             25% {
                 transform: translateY(-12px) translateX(8px) rotate(2deg);
             }
+
             50% {
                 transform: translateY(15px) translateX(-10px) rotate(-2deg);
             }
+
             75% {
                 transform: translateY(-8px) translateX(12px) rotate(1deg);
             }
         }
-        
+
         /* Enhanced negative magnetic effect for monochrome shapes */
         .floating-shapes:hover .about-shape {
             transition: transform 0.15s ease-out;
         }
+
         /* Education & Skills Section - Shared Styles */
         .skills {
             background: #1a1a1a;
             position: relative;
             overflow: hidden;
         }
+
         #skillsBackgroundCanvas {
             position: absolute;
             top: 0;
@@ -367,6 +420,7 @@
             z-index: 0;
             opacity: 0.1;
         }
+
         .skills-grid {
             position: relative;
             z-index: 1;
@@ -375,6 +429,7 @@
             gap: 2.5rem;
             margin-top: 4rem;
         }
+
         .skill-card {
             background: #0d0d0d;
             padding: 3rem;
@@ -385,6 +440,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+
         .skill-card::before {
             content: '';
             position: absolute;
@@ -395,31 +451,38 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
             transition: left 0.6s ease-out;
         }
+
         .skill-card:hover::before {
             left: 100%;
         }
+
         .skill-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1);
             border-color: #555;
         }
+
         .skill-card h3 {
             font-size: 1.5rem;
             color: #ffffff;
             margin-bottom: 1.8rem;
             font-weight: 600;
         }
+
         .skill-card p {
             font-size: 1.1rem;
             color: #b0b0b0;
             margin-top: 0.5rem;
         }
+
         .skill-card p strong {
             color: #ffffff;
         }
+
         .skill-list {
             list-style: none;
         }
+
         .skill-list li {
             background: #222;
             margin: 0.6rem 0;
@@ -430,14 +493,16 @@
             border-left: 4px solid transparent;
             transition: all 0.3s ease;
         }
+
         .skill-list li:hover {
             border-left-color: #ffffff;
             background: #333;
             transform: translateX(5px);
         }
-            /* Experience Section */
-        
-            .experience {
+
+        /* Experience Section */
+
+        .experience {
             background: #2a2a2a;
             color: #e0e0e0;
             padding: 4rem 0;
@@ -483,7 +548,8 @@
 
         /* Fix dot positioning for left items */
         .left::after {
-            right: -12px; /* Position dot on the timeline for left cards */
+            right: -12px;
+            /* Position dot on the timeline for left cards */
         }
 
         .timeline-item:hover::after {
@@ -511,17 +577,20 @@
             border: 1px solid #333;
             transition: all 0.4s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            width: 120%; /* Increased width by 20% */
+            width: 120%;
+            /* Increased width by 20% */
         }
 
         /* Adjust positioning for left cards to extend outward */
         .left .timeline-content {
-            margin-left: -20%; /* Move left cards further left to avoid timeline */
+            margin-left: -20%;
+            /* Move left cards further left to avoid timeline */
         }
 
         /* Adjust positioning for right cards to extend outward */
         .right .timeline-content {
-            margin-left: 0; /* Keep right cards in place, extending to the right */
+            margin-left: 0;
+            /* Keep right cards in place, extending to the right */
         }
 
         .timeline-content:hover {
@@ -787,8 +856,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .project-card-content {
@@ -869,6 +943,7 @@
                 font-size: 2rem;
             }
         }
+
         .tech-tags {
             margin-top: 2rem;
             display: flex;
@@ -876,6 +951,7 @@
             justify-content: center;
             gap: 0.75rem;
         }
+
         .tech-tag {
             background: #333333;
             color: #ffffff;
@@ -885,23 +961,27 @@
             border: 1px solid #555555;
             transition: all 0.3s ease;
         }
+
         .tech-tag:hover {
             background: #ffffff;
             color: #000000;
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+
         /* Photography Section */
         .photography {
             background: #1a1a1a;
             color: #e0e0e0;
         }
+
         .photo-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 4rem;
         }
+
         .photo-item {
             aspect-ratio: 1;
             background: #0d0d0d;
@@ -913,24 +993,29 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
         .photo-item:hover {
             transform: scale(1.06) translateY(-5px);
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.15);
         }
+
         .photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
         }
+
         .photo-item:hover img {
             transform: scale(1.15);
         }
+
         /* Resume Section */
         .resume {
             background: #2a2a2a;
             color: #e0e0e0;
         }
+
         .resume-container {
             max-width: 900px;
             margin: 0 auto;
@@ -940,35 +1025,42 @@
             border: 1px solid #333;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
+
         .resume-header {
             text-align: center;
             margin-bottom: 3.5rem;
             padding-bottom: 2.5rem;
             border-bottom: 2px solid #555;
         }
+
         .resume-header h3 {
             font-size: 2.8rem;
             color: #ffffff;
             margin-bottom: 0.8rem;
             font-weight: 700;
         }
+
         .resume-contact {
             color: #b0b0b0;
             margin-bottom: 0.6rem;
             font-size: 1.05rem;
         }
+
         .resume-contact a {
             color: #b0b0b0;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .resume-contact a:hover {
             color: #ffffff;
             text-decoration: underline;
         }
+
         .resume-section {
             margin-bottom: 3rem;
         }
+
         .resume-section h4 {
             font-size: 1.4rem;
             color: #ffffff;
@@ -979,6 +1071,7 @@
             letter-spacing: 0.8px;
             font-weight: 600;
         }
+
         .resume-item {
             margin-bottom: 2.5rem;
             padding: 1.8rem;
@@ -988,31 +1081,37 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
+
         .resume-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
+
         .resume-item h5 {
             color: #ffffff;
             font-weight: 600;
             margin-bottom: 0.6rem;
             font-size: 1.25rem;
         }
+
         .resume-item .company {
             color: #b0b0b0;
             font-weight: 500;
             margin-bottom: 0.3rem;
             font-size: 1.1rem;
         }
+
         .resume-item .date {
             color: #808080;
             font-size: 0.95rem;
             margin-bottom: 1.2rem;
         }
+
         .resume-item ul {
             list-style: none;
             margin-left: 0;
         }
+
         .resume-item li {
             color: #e0e0e0;
             margin-bottom: 0.9rem;
@@ -1021,6 +1120,7 @@
             line-height: 1.7;
             font-size: 1.05rem;
         }
+
         .resume-item li::before {
             content: '';
             width: 6px;
@@ -1031,12 +1131,14 @@
             left: 0;
             top: 0.7rem;
         }
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
             margin-top: 1.2rem;
         }
+
         .skill-badge {
             background: #333;
             color: #ffffff;
@@ -1047,12 +1149,14 @@
             border: 1px solid #555;
             transition: all 0.3s ease;
         }
+
         .skill-badge:hover {
             background: #ffffff;
             color: #000;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
         .download-btn {
             display: inline-block;
             background: #ffffff;
@@ -1067,24 +1171,28 @@
             border: 2px solid #ffffff;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+
         .download-btn:hover {
             background: #000;
             color: #ffffff;
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
         }
+
         /* Contact Section */
         .contact {
             background: #0a0a0a;
             color: #ffffff;
             text-align: center;
         }
+
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
             margin-top: 4rem;
         }
+
         .contact-item {
             background: #0d0d0d;
             padding: 3rem;
@@ -1095,6 +1203,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+
         .contact-item::before {
             content: '';
             position: absolute;
@@ -1105,20 +1214,24 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
             transition: left 0.6s ease-out;
         }
+
         .contact-item:hover::before {
             left: 100%;
         }
+
         .contact-item:hover {
             transform: translateY(-8px);
             border-color: #555;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1);
         }
+
         .contact-item h4 {
             margin-bottom: 1rem;
             color: #ffffff;
             font-size: 1.4rem;
             font-weight: 600;
         }
+
         .contact-item a,
         .contact-item p {
             color: #b0b0b0;
@@ -1126,10 +1239,12 @@
             transition: color 0.3s ease;
             font-size: 1.05rem;
         }
+
         .contact-item a:hover {
             color: #ffffff;
             text-decoration: underline;
         }
+
         /* Photo Modal */
         .photo-modal {
             display: none;
@@ -1147,11 +1262,13 @@
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
+
         .photo-modal.active {
             opacity: 1;
             visibility: visible;
             display: flex;
         }
+
         .modal-content {
             display: block;
             max-width: 95%;
@@ -1160,6 +1277,7 @@
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
+
         .close-modal {
             position: absolute;
             top: 20px;
@@ -1170,135 +1288,162 @@
             cursor: pointer;
             transition: color 0.3s ease, transform 0.2s ease;
         }
+
         .close-modal:hover,
         .close-modal:focus {
             color: #a0a0a0;
             transform: rotate(90deg);
         }
+
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .bio-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
+
             .bio-visual {
                 height: 350px;
             }
+
             .timeline::after {
                 left: 20px;
             }
+
             .timeline-item {
                 width: 100%;
                 padding-left: 60px;
                 padding-right: 15px;
             }
+
             .timeline-item::after {
                 left: 10px;
             }
+
             .right {
                 left: 0;
             }
+
             .right::after {
                 left: 10px;
             }
-            
+
             /* Hero adjustments for tablets */
             #heroText h1 {
                 font-size: 3.5rem !important;
             }
-            
+
             #heroText p {
                 font-size: 1.2rem !important;
             }
         }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
+
             /* Hero section mobile adjustments */
             .hero-container {
                 justify-content: center;
             }
-            
+
             #heroText {
                 width: 90% !important;
                 margin: 0 1rem !important;
                 padding: 2.5rem 2rem !important;
             }
-            
+
             #heroText h1 {
                 font-size: 2.5rem !important;
                 line-height: 1.2;
             }
-            
+
             #heroText .subtitle {
                 font-size: 1.1rem !important;
             }
-            
+
             #heroText .description {
                 font-size: 1rem !important;
             }
-            
+
             .projects-sticky-header h2 {
                 font-size: 3.2rem;
             }
+
             .projects-sticky-header p {
                 font-size: 1.2rem;
             }
+
             .project-card-content {
                 padding: 2rem;
                 max-width: 90%;
             }
+
             .project-card-content h3 {
                 font-size: 2rem;
             }
+
             .project-card-content p {
                 font-size: 0.95rem;
             }
+
             .skill-card,
             .contact-item {
                 padding: 2rem;
             }
+
             .skill-card h3 {
                 font-size: 1.3rem;
             }
+
             .skill-list li {
                 font-size: 0.9rem;
             }
+
             .resume-header h3 {
                 font-size: 2rem;
             }
+
             .resume-item {
                 padding: 1.2rem;
             }
+
             .resume-item h5 {
                 font-size: 1.1rem;
             }
+
             .resume-item li {
                 font-size: 0.95rem;
             }
         }
+
         @media (max-width: 480px) {
             .projects-sticky-header h2 {
                 font-size: 2.5rem;
             }
+
             .projects-sticky-header p {
                 font-size: 1rem;
             }
+
             .tech-tag {
                 font-size: 0.8rem;
                 padding: 0.4rem 0.8rem;
             }
+
             .photo-gallery {
                 grid-template-columns: 1fr;
             }
+
             .resume-header {
                 padding-bottom: 1.5rem;
             }
+
             .resume-container {
                 padding: 2rem;
             }
+
             .download-btn {
                 padding: 1rem 2rem;
                 font-size: 0.9rem;
@@ -1306,6 +1451,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Interactive Background Canvas -->
     <canvas class="bg-canvas" id="backgroundCanvas"></canvas>
@@ -1329,17 +1475,18 @@
 
     <!-- Hero Section - Full screen image with gradient overlay -->
     <section id="home">
-        <!-- Hero Image - Free positioning, no container -->
+        <!-- Hero Image - Complete screen coverage -->
         <img id="heroImage" src="assets/profilepicture3.png" alt="Rama Bhadra Sastry Kolluri" />
-        
-        <!-- Gradient Overlay - Creates smooth transition to black -->
-        <div class="gradient-overlay"></div>
-        
-        <!-- Text overlay on image -->
+
+        <!-- Gradient Overlay - Appears on scroll -->
+        <div class="gradient-overlay" id="gradientOverlay"></div>
+
+        <!-- Text overlay - Animates in on scroll -->
         <div id="heroText">
             <h1>Rama Bhadra Sastry Kolluri</h1>
-            <p>Software Engineer | Full-Stack Developer | Innovation Enthusiast</p>
-            <p>2+ years of experience in scalable application design, microservices architecture, and modern web technologies.</p>
+            <p class="subtitle">Software Engineer | Full-Stack Developer | UI/UX Enthusiast</p>
+            <p class="description">3+ years of experience in scalable application design, microservices architecture,
+                and modern web technologies.</p>
         </div>
     </section>
 
@@ -1349,15 +1496,20 @@
             <div class="bio-content">
                 <div class="bio-text">
                     <h2>About Me</h2>
-                    <p>I am a passionate Software Engineer with 2+ years of experience in full-stack development,
+                    <p>I am a passionate Software Engineer with 3+ years of experience in full-stack development,
                         specializing in scalable application design, microservices architecture, and modern web
                         technologies. Currently pursuing my Master's in Software Engineering at the University of
                         Maryland, Baltimore County.</p>
-                    <p>My expertise spans across React.js, Node.js, and big data platforms with a strong foundation in
-                        agile methodologies. I have a proven track record of developing innovative solutions, leading
+                    <p>My expertise spans across React.js, Node.js, backend technologies, and big data platforms with a
+                        strong foundation in
+                        agile methodologies. I have led teams for multiple projects including the RAM healthcare
+                        platform, EA software optimization project, and LibHunt AI capstone project. My proven track
+                        record includes developing innovative solutions, leading
                         technical documentation, and collaborating with cross-functional teams to deliver high-quality
                         software systems.</p>
-                    <p>I'm driven by the challenge of creating solutions that meet customer requirements and support
+                    <p>I have extensive experience with cloud technologies, having worked with AWS services including
+                        EC2, S3, CloudFront, RDS, along with MongoDB and Firebase for the RAM project. I'm driven by the
+                        challenge of creating solutions that meet customer requirements and support
                         highly available environments, always focusing on performance optimization and user experience
                         enhancement.</p>
                 </div>
@@ -1385,7 +1537,7 @@
                 <div class="skill-card">
                     <h3>Master of Science in Software Engineering</h3>
                     <p><strong>University of Maryland, Baltimore County (UMBC)</strong></p>
-                    <p>Baltimore, MD | Expected: May 2025</p>
+                    <p>Baltimore, MD | Graduated: May 2025</p>
                 </div>
                 <div class="skill-card">
                     <h3>Bachelor of Technology in Engineering</h3>
@@ -1418,51 +1570,61 @@
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>Architecture & Design</h3>
+                    <h3>Architecture & System Design</h3>
                     <ul class="skill-list">
                         <li>Microservices Architecture</li>
                         <li>RESTful APIs</li>
                         <li>Full-Stack Development</li>
                         <li>System Design</li>
+                        <li>Serverless Architecture</li>
+                        <li>Load Balancing</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>Data & Analytics</h3>
+                    <h3>Database & Data Technologies</h3>
                     <ul class="skill-list">
                         <li>MongoDB</li>
                         <li>MySQL</li>
+                        <li>Firebase</li>
                         <li>Big Data Processing</li>
                         <li>Data Pipeline Development</li>
                         <li>Analytics</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>DevOps & Engineering</h3>
+                    <h3>DevOps & CI/CD</h3>
                     <ul class="skill-list">
-                        <li>CI/CD Pipelines</li>
+                        <li>CI/CD Pipelines (Jenkins, GitLab)</li>
                         <li>Docker</li>
-                        <li>Jenkins</li>
+                        <li>Kubernetes</li>
                         <li>Git & GitHub</li>
                         <li>Agile (Scrum & Kanban)</li>
                         <li>Test-Driven Development</li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>Networking & Cloud</h3>
+                    <h3>Cloud & AWS Services</h3>
                     <ul class="skill-list">
-                        <li>SDN (Software-Defined Networking)</li>
-                        <li>API Integration</li>
-                        <li>Cloud Technologies</li>
-                        <li>System Protocols</li>
+                        <li>EC2 (Elastic Compute Cloud)</li>
+                        <li>S3 (Simple Storage Service)</li>
+                        <li>CloudFront (CDN)</li>
+                        <li>RDS (Relational Database Service)</li>
+                        <li>Lambda (Serverless Computing)</li>
+                        <li>API Gateway</li>
+                       
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>Documentation & Communication</h3>
+                    <h3>Leadership & Communication</h3>
                     <ul class="skill-list">
                         <li>Technical Writing</li>
                         <li>System Documentation</li>
                         <li>Requirements Analysis</li>
                         <li>Cross-functional Collaboration</li>
+                        <li>Team Leadership</li>
+                        <li>Project Management</li>
+                        <li>API Integration</li>
+                     
                     </ul>
                 </div>
             </div>
@@ -1483,10 +1645,14 @@
                         <h4>University of Maryland, Baltimore County (UMBC)</h4>
                         <div class="date">September 2023 - Present</div>
                         <ul>
-                            <li>Evaluated 50+ technical assignments and engineering projects per semester, improving student performance by 20%</li>
-                            <li>Delivered guest lectures on software engineering principles and system design, achieving 95% satisfaction rating</li>
-                            <li>Collaborated with faculty to refine curriculum and engineering processes, leading to 15% improvement in course effectiveness</li>
-                            <li>Developed agile workflow solutions for Electronic Arts collaboration project, enhancing team productivity by 25%</li>
+                            <li>Evaluated 50+ technical assignments and engineering projects per semester, improving
+                                student performance by 20%</li>
+                            <li>Delivered guest lectures on software engineering principles and system design, achieving
+                                95% satisfaction rating</li>
+                            <li>Collaborated with faculty to refine curriculum and engineering processes, leading to 15%
+                                improvement in course effectiveness</li>
+                            <li>Developed agile workflow solutions for Electronic Arts collaboration project, enhancing
+                                team productivity by 25%</li>
                         </ul>
                     </div>
                 </div>
@@ -1496,11 +1662,19 @@
                         <h4>Cognizant Technology Solutions</h4>
                         <div class="date">October 2021 - November 2022</div>
                         <ul>
-                            <li>Engineered scalable web applications using React.js and AngularJS, supporting high-availability environments and reducing customer complaints by 20%</li>
-                            <li>Architected and implemented microservices solutions, decreasing system rendering delays by 30% for enhanced user experience</li>
-                            <li>Developed modular, reusable software components following established engineering practices, reducing development time by 20%</li>
-                            <li>Implemented automated CI/CD pipelines and deployment strategies, improving deployment efficiency by 25%</li>
-                            <li>Conducted comprehensive testing, debugging, and system validation, reducing production defects by 30%</li>
+                            <li>Engineered scalable full-stack web applications using React.js, AngularJS for frontend
+                                and Node.js, Express.js for backend development, supporting high-availability
+                                environments and reducing customer complaints by 20%</li>
+                            <li>Architected and implemented microservices solutions with RESTful APIs and backend
+                                services, decreasing system rendering delays by 30% for enhanced user experience</li>
+                            <li>Developed modular, reusable software components across frontend and backend systems
+                                following established engineering practices, reducing development time by 20%</li>
+                            <li>Implemented automated CI/CD pipelines using Jenkins, Docker, and GitLab CI/CD with
+                                deployment strategies, improving deployment efficiency by 25%</li>
+                            <li>Conducted comprehensive testing, debugging, and system validation across full-stack
+                                applications, reducing production defects by 30%</li>
+                            <li>Led backend development initiatives focusing on database optimization, server-side
+                                logic, and API performance tuning</li>
                         </ul>
                     </div>
                 </div>
@@ -1513,7 +1687,8 @@
     <section id="projects" class="projects">
         <div class="projects-sticky-header" id="projectStickyHeader">
             <h2 id="currentProjectTitle">My Projects</h2>
-            <p id="currentProjectDescription">Innovative solutions and technical achievements showcasing expertise in full-stack development, system optimization, and collaborative engineering</p>
+            <p id="currentProjectDescription">Innovative solutions and technical achievements showcasing expertise in
+                full-stack development, system optimization, and collaborative engineering</p>
             <div class="sticky-tech-tags" id="stickyTechTags" style="display: none;">
                 <!-- Tech tags will be dynamically added here -->
             </div>
@@ -1521,7 +1696,7 @@
                 <!-- Links will be dynamically added here -->
             </div>
         </div>
-        
+
         <div class="projects-container">
             <!-- Project 1 -->
             <div class="project-scroll-section" data-project-id="0">
@@ -1534,7 +1709,9 @@
                 </div>
                 <div class="project-card-content">
                     <h3>LibHunt AI - Intelligent Library Discovery Platform</h3>
-                    <p>Capstone project that consolidated 4+ separate developer tools into a unified platform, reducing library research time by 75%. Features advanced search algorithms with intelligent filtering and real-time data synchronization.</p>
+                    <p>Capstone project that consolidated 4+ separate developer tools into a unified platform, reducing
+                        library research time by 75%. Features advanced search algorithms with intelligent filtering and
+                        real-time data synchronization.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">TypeScript</span>
@@ -1558,7 +1735,9 @@
                 </div>
                 <div class="project-card-content">
                     <h3>MERN Stack Web Application - Verizon Collaboration</h3>
-                    <p>High-availability application supporting 1,000+ concurrent users in production. Designed comprehensive RESTful API architecture, reducing data retrieval time by 30% with responsive UI design.</p>
+                    <p>High-availability application supporting 1,000+ concurrent users in production. Designed
+                        comprehensive RESTful API architecture, reducing data retrieval time by 30% with responsive UI
+                        design.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">MongoDB</span>
                         <span class="tech-tag">Express.js</span>
@@ -1581,7 +1760,9 @@
                 </div>
                 <div class="project-card-content">
                     <h3>Remote Area Medical App - MEAN Stack Platform</h3>
-                    <p>Enterprise-grade healthcare platform serving 10,000+ active users. Optimized system protocols and data flows, cutting application latency by 30% with scalable architecture for distributed environments.</p>
+                    <p>Enterprise-grade healthcare platform serving 10,000+ active users. Optimized system protocols and
+                        data flows, cutting application latency by 30% with scalable architecture for distributed
+                        environments.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">AngularJS</span>
                         <span class="tech-tag">Express.js</span>
@@ -1589,6 +1770,10 @@
                         <span class="tech-tag">Node.js</span>
                         <span class="tech-tag">Healthcare Systems</span>
                         <span class="tech-tag">Distributed Architecture</span>
+                        <span class="tech-tag">Android studio</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Mysql</span>
+                        <span class="tech-tag">AWS</span>
                     </div>
                 </div>
             </div>
@@ -1604,7 +1789,8 @@
                 </div>
                 <div class="project-card-content">
                     <h3>Software Development Optimization - Electronic Arts</h3>
-                    <p>Formulated agile-based engineering workflow and process improvements, enhancing team productivity by 25%. Integrated advanced CI/CD pipeline solutions, decreasing deployment times by 20%.</p>
+                    <p>Formulated agile-based engineering workflow and process improvements, enhancing team productivity
+                        by 25%. Integrated advanced CI/CD pipeline solutions, decreasing deployment times by 20%.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Agile Methodologies</span>
                         <span class="tech-tag">CI/CD Pipelines</span>
@@ -1948,35 +2134,105 @@
             window.addEventListener('resize', resizeBackgroundCanvas);
             animateBackgroundCanvas();
 
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Section - Scroll-triggered animations
+            // Initially hide text and gradient
+            gsap.set("#heroText", { opacity: 0 });
+            gsap.set("#heroText h1", { y: 50, opacity: 0 });
+            gsap.set("#heroText .subtitle", { y: 30, opacity: 0 });
+            gsap.set("#heroText .description", { y: 30, opacity: 0 });
+            gsap.set("#gradientOverlay", { opacity: 0 });
+
+            // Animate gradient and text on scroll
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#home",
+                    start: "top top",
+                    end: "60% top",
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+
+                        // Fade in gradient overlay
+                        gsap.set("#gradientOverlay", {
+                            opacity: progress * 1.5
+                        });
+
+                        // Show hero text container
+                        if (progress > 0.2) {
+                            gsap.set("#heroText", { opacity: 1 });
+                        }
+                    }
+                }
+            });
+
+            // Text Animation Timeline
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#home",
+                    start: "20% top",
+                    end: "80% top",
+                    toggleActions: "play none none reverse",
+                    onEnter: () => {
+                        // Animate text elements in sequence
+                        gsap.to("#heroText h1", {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power3.out"
+                        });
+
+                        gsap.to("#heroText .subtitle", {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power3.out",
+                            delay: 0.3
+                        });
+
+                        gsap.to("#heroText .description", {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power3.out",
+                            delay: 0.6
+                        });
+                    }
+                }
+            });
+
+
             // --- Negative Magnetic Effect for Bio Shapes ---
             const floatingShapes = document.getElementById('floatingShapes');
             const aboutShapes = document.querySelectorAll('.about-shape');
-            
+
             console.log('Floating shapes container:', floatingShapes);
             console.log('About shapes found:', aboutShapes.length);
-            
+
             if (floatingShapes && aboutShapes.length > 0) {
                 floatingShapes.addEventListener('mousemove', (e) => {
                     const rect = floatingShapes.getBoundingClientRect();
                     const mouseX = e.clientX - rect.left;
                     const mouseY = e.clientY - rect.top;
-                    
+
                     aboutShapes.forEach((shape, index) => {
                         const shapeRect = shape.getBoundingClientRect();
                         const containerRect = floatingShapes.getBoundingClientRect();
                         const shapeX = (shapeRect.left - containerRect.left) + shapeRect.width / 2;
                         const shapeY = (shapeRect.top - containerRect.top) + shapeRect.height / 2;
-                        
+
                         const deltaX = mouseX - shapeX;
                         const deltaY = mouseY - shapeY;
                         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                        
+
                         // Negative magnetic effect - shapes move away from cursor
                         if (distance < 150) {
                             const force = (150 - distance) / 150;
                             const repelX = -deltaX * force * 0.8;
                             const repelY = -deltaY * force * 0.8;
-                            
+
                             shape.style.transform = `translate(${repelX}px, ${repelY}px) scale(${1 + force * 0.2})`;
                             // Keep original colors, don't change them
                             shape.style.boxShadow = `0 0 ${30 + force * 40}px currentColor`;
@@ -1987,14 +2243,14 @@
                         }
                     });
                 });
-                
+
                 floatingShapes.addEventListener('mouseleave', () => {
                     aboutShapes.forEach(shape => {
                         shape.style.transform = 'translate(0px, 0px) scale(1)';
                         shape.style.boxShadow = '';
                     });
                 });
-                
+
                 console.log('Negative magnetic effect initialized successfully!');
             } else {
                 console.error('Could not initialize magnetic effect - missing elements');
@@ -2027,7 +2283,7 @@
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= sectionTop - window.innerHeight / 3 && 
+                    if (pageYOffset >= sectionTop - window.innerHeight / 3 &&
                         pageYOffset < sectionTop + sectionHeight - window.innerHeight / 3) {
                         current = section.getAttribute('id');
                     }
@@ -2173,223 +2429,223 @@
                 resizeSkillsCanvas();
             });
 
-             gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger);
 
-        // --- Projects Section Animations ---
-        gsap.registerPlugin(ScrollTrigger);
+            // --- Projects Section Animations ---
+            gsap.registerPlugin(ScrollTrigger);
 
-        // --- Projects Section Animations ---
-        const projectSections = gsap.utils.toArray(".project-scroll-section");
-        const projectStickyHeader = document.getElementById("projectStickyHeader");
-        const currentProjectTitle = document.getElementById("currentProjectTitle");
-        const currentProjectDescription = document.getElementById("currentProjectDescription");
+            // --- Projects Section Animations ---
+            const projectSections = gsap.utils.toArray(".project-scroll-section");
+            const projectStickyHeader = document.getElementById("projectStickyHeader");
+            const currentProjectTitle = document.getElementById("currentProjectTitle");
+            const currentProjectDescription = document.getElementById("currentProjectDescription");
 
-        const projectData = [
-            {
-                title: "LibHunt AI",
-                description: "Intelligent Library Discovery Platform. Capstone project that consolidated 4+ separate developer tools into a unified platform, reducing library research time by 75%. Features advanced search algorithms with intelligent filtering and real-time data synchronization.",
-                skills: ["React", "TypeScript", "Node.js", "MongoDB Atlas", "JWT Authentication", "Vercel", "Render"],
-                links: [
-                    { text: " View Live Demo", url: "https://capstone-lib-hunt-ai.vercel.app", type: "live" }
-                ]
-            },
-            {
-                title: "Verizon MERN Stack App",
-                description: "High-availability application supporting 1,000+ concurrent users in production. Designed comprehensive RESTful API architecture, reducing data retrieval time by 30% with responsive UI design.",
-                skills: ["MongoDB", "Express.js", "React.js", "Node.js", "RESTful APIs", "Automated Testing"],
-                links: [
-                    { text: " Client Project (Private)", url: null, type: "disabled" }
-                ]
-            },
-            {
-                title: "Remote Area Medical App",
-                description: "MEAN Stack Platform. Enterprise-grade healthcare platform serving 10,000+ active users. Optimized system protocols and data flows, cutting application latency by 30% with scalable architecture for distributed environments.",
-                skills: ["AngularJS", "Express.js", "MongoDB", "Node.js", "Healthcare Systems", "Distributed Architecture"],
-                links: [
-                    { text: " View Repository", url: "https://github.com/KRBSASTRY/Doctor_Appointment.git", type: "repo" }
-                ]
-            },
-            {
-                title: "EA Software Dev Optimization",
-                description: "Formulated agile-based engineering workflow and process improvements, enhancing team productivity by 25%. Integrated advanced CI/CD pipeline solutions, decreasing deployment times by 20%.",
-                skills: ["Agile Methodologies", "CI/CD Pipelines", "Process Optimization", "Team Leadership", "Technical Research"],
-                links: [
-                    { text: " Private Project (NDA)", url: null, type: "disabled" }
-                ]
+            const projectData = [
+                {
+                    title: "LibHunt AI",
+                    description: "Intelligent Library Discovery Platform. Capstone project that consolidated 4+ separate developer tools into a unified platform, reducing library research time by 75%. Features advanced search algorithms with intelligent filtering and real-time data synchronization.",
+                    skills: ["React", "TypeScript", "Node.js", "MongoDB Atlas", "JWT Authentication", "Vercel", "Render"],
+                    links: [
+                        { text: " View Live Demo", url: "https://capstone-lib-hunt-ai.vercel.app", type: "live" }
+                    ]
+                },
+                {
+                    title: "Verizon MERN Stack App",
+                    description: "High-availability application supporting 1,000+ concurrent users in production. Designed comprehensive RESTful API architecture, reducing data retrieval time by 30% with responsive UI design.",
+                    skills: ["MongoDB", "Express.js", "React.js", "Node.js", "RESTful APIs", "Automated Testing"],
+                    links: [
+                        { text: " Client Project (Private)", url: null, type: "disabled" }
+                    ]
+                },
+                {
+                    title: "Remote Area Medical App",
+                    description: "MEAN Stack Platform. Enterprise-grade healthcare platform serving 10,000+ active users. Optimized system protocols and data flows, cutting application latency by 30% with scalable architecture for distributed environments.",
+                    skills: ["AngularJS", "Express.js", "MongoDB", "Node.js", "Healthcare Systems", "Distributed Architecture"],
+                    links: [
+                        { text: " View Repository", url: "https://github.com/KRBSASTRY/Doctor_Appointment.git", type: "repo" }
+                    ]
+                },
+                {
+                    title: "EA Software Dev Optimization",
+                    description: "Formulated agile-based engineering workflow and process improvements, enhancing team productivity by 25%. Integrated advanced CI/CD pipeline solutions, decreasing deployment times by 20%.",
+                    skills: ["Agile Methodologies", "CI/CD Pipelines", "Process Optimization", "Team Leadership", "Technical Research"],
+                    links: [
+                        { text: " Private Project (NDA)", url: null, type: "disabled" }
+                    ]
+                }
+            ];
+
+            const imagePrompts = [
+                "futuristic AI brain with neural network connections, digital library database, dark background, blue and purple glowing lines, sci-fi, 4k, abstract, modern technology",
+                "sleek web application dashboard, data visualizations, MERN stack logo subtly integrated, secure network connections, minimalist UI, shades of grey and electric blue, high resolution, digital design",
+                "global healthcare system UI, medical cross symbol, data flow, interconnected devices, remote patient monitoring, clean white and sterile blue interface, abstract, digital art",
+                "agile development team working collaboratively, CI/CD pipeline flow chart with subtle gaming controller icons, process optimization, dark tones with vibrant green highlights, abstract digital art"
+            ];
+
+            // Generate placeholder images for now (replace with your API if needed)
+            projectSections.forEach((section, i) => {
+                const imgElement = section.querySelector(".project-image");
+                const loadingOverlay = section.querySelector(".image-loading-overlay");
+
+                // Using placeholder images for demonstration
+                setTimeout(() => {
+                    imgElement.src = `https://placehold.co/1200x800/2a2a2a/e0e0e0?text=Project+${i + 1}`;
+                    loadingOverlay.classList.add("hidden");
+                }, 1000 + (i * 500));
+            });
+
+            // Initialize with first project
+            if (projectData.length > 0) {
+                currentProjectTitle.textContent = "My Projects";
+                currentProjectDescription.textContent = "Innovative solutions and technical achievements showcasing expertise in full-stack development, system optimization, and collaborative engineering";
             }
-        ];
 
-        const imagePrompts = [
-            "futuristic AI brain with neural network connections, digital library database, dark background, blue and purple glowing lines, sci-fi, 4k, abstract, modern technology",
-            "sleek web application dashboard, data visualizations, MERN stack logo subtly integrated, secure network connections, minimalist UI, shades of grey and electric blue, high resolution, digital design",
-            "global healthcare system UI, medical cross symbol, data flow, interconnected devices, remote patient monitoring, clean white and sterile blue interface, abstract, digital art",
-            "agile development team working collaboratively, CI/CD pipeline flow chart with subtle gaming controller icons, process optimization, dark tones with vibrant green highlights, abstract digital art"
-        ];
+            function updateProjectLinks(projectId) {
+                const projectLinksContainer = document.getElementById("projectLinks");
+                const project = projectData[projectId];
 
-        // Generate placeholder images for now (replace with your API if needed)
-        projectSections.forEach((section, i) => {
-            const imgElement = section.querySelector(".project-image");
-            const loadingOverlay = section.querySelector(".image-loading-overlay");
-            
-            // Using placeholder images for demonstration
-            setTimeout(() => {
-                imgElement.src = `https://placehold.co/1200x800/2a2a2a/e0e0e0?text=Project+${i+1}`;
-                loadingOverlay.classList.add("hidden");
-            }, 1000 + (i * 500));
-        });
+                if (project && project.links) {
+                    projectLinksContainer.innerHTML = '';
+                    project.links.forEach(link => {
+                        if (link.type === 'disabled') {
+                            const disabledSpan = document.createElement('span');
+                            disabledSpan.className = 'project-link disabled';
+                            disabledSpan.textContent = link.text;
+                            projectLinksContainer.appendChild(disabledSpan);
+                        } else {
+                            const linkElement = document.createElement('a');
+                            linkElement.href = link.url;
+                            linkElement.target = '_blank';
+                            linkElement.className = 'project-link';
+                            linkElement.textContent = link.text;
+                            projectLinksContainer.appendChild(linkElement);
+                        }
+                    });
+                    projectLinksContainer.style.display = 'flex';
+                } else {
+                    projectLinksContainer.style.display = 'none';
+                }
+            }
 
-        // Initialize with first project
-        if (projectData.length > 0) {
-            currentProjectTitle.textContent = "My Projects";
-            currentProjectDescription.textContent = "Innovative solutions and technical achievements showcasing expertise in full-stack development, system optimization, and collaborative engineering";
-        }
+            function updateProjectSkills(projectId) {
+                const stickyTechTags = document.getElementById("stickyTechTags");
+                const project = projectData[projectId];
 
-        function updateProjectLinks(projectId) {
-            const projectLinksContainer = document.getElementById("projectLinks");
-            const project = projectData[projectId];
-            
-            if (project && project.links) {
-                projectLinksContainer.innerHTML = '';
-                project.links.forEach(link => {
-                    if (link.type === 'disabled') {
-                        const disabledSpan = document.createElement('span');
-                        disabledSpan.className = 'project-link disabled';
-                        disabledSpan.textContent = link.text;
-                        projectLinksContainer.appendChild(disabledSpan);
-                    } else {
-                        const linkElement = document.createElement('a');
-                        linkElement.href = link.url;
-                        linkElement.target = '_blank';
-                        linkElement.className = 'project-link';
-                        linkElement.textContent = link.text;
-                        projectLinksContainer.appendChild(linkElement);
-                    }
-                });
-                projectLinksContainer.style.display = 'flex';
-            } else {
+                if (project && project.skills) {
+                    stickyTechTags.innerHTML = '';
+                    project.skills.forEach(skill => {
+                        const skillTag = document.createElement('span');
+                        skillTag.className = 'sticky-tech-tag';
+                        skillTag.textContent = skill;
+                        stickyTechTags.appendChild(skillTag);
+                    });
+                    stickyTechTags.style.display = 'flex';
+                } else {
+                    stickyTechTags.style.display = 'none';
+                }
+            }
+
+            function hideProjectLinks() {
+                const projectLinksContainer = document.getElementById("projectLinks");
+                const stickyTechTags = document.getElementById("stickyTechTags");
                 projectLinksContainer.style.display = 'none';
-            }
-        }
-
-        function updateProjectSkills(projectId) {
-            const stickyTechTags = document.getElementById("stickyTechTags");
-            const project = projectData[projectId];
-            
-            if (project && project.skills) {
-                stickyTechTags.innerHTML = '';
-                project.skills.forEach(skill => {
-                    const skillTag = document.createElement('span');
-                    skillTag.className = 'sticky-tech-tag';
-                    skillTag.textContent = skill;
-                    stickyTechTags.appendChild(skillTag);
-                });
-                stickyTechTags.style.display = 'flex';
-            } else {
                 stickyTechTags.style.display = 'none';
             }
-        }
 
-        function hideProjectLinks() {
-            const projectLinksContainer = document.getElementById("projectLinks");
-            const stickyTechTags = document.getElementById("stickyTechTags");
-            projectLinksContainer.style.display = 'none';
-            stickyTechTags.style.display = 'none';
-        }
+            projectSections.forEach((section, i) => {
+                const imageWrapper = section.querySelector(".project-image-wrapper");
+                const content = section.querySelector(".project-card-content");
+                const projectId = parseInt(section.dataset.projectId);
 
-        projectSections.forEach((section, i) => {
-            const imageWrapper = section.querySelector(".project-image-wrapper");
-            const content = section.querySelector(".project-card-content");
-            const projectId = parseInt(section.dataset.projectId);
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top center",
-                    end: "bottom center",
-                    scrub: 1,
-                    toggleActions: "play reverse play reverse",
-                    onEnter: () => {
-                        if (projectId >= 0) {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top center",
+                        end: "bottom center",
+                        scrub: 1,
+                        toggleActions: "play reverse play reverse",
+                        onEnter: () => {
+                            if (projectId >= 0) {
+                                currentProjectTitle.textContent = projectData[projectId].title;
+                                currentProjectDescription.textContent = projectData[projectId].description;
+                                updateProjectLinks(projectId);
+                                updateProjectSkills(projectId);
+                                gsap.fromTo([currentProjectTitle, currentProjectDescription],
+                                    { opacity: 0, y: 30 },
+                                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" }
+                                );
+                            }
+                        },
+                        onLeave: () => {
+                            hideProjectLinks();
+                            gsap.to([currentProjectTitle, currentProjectDescription], { opacity: 0, y: -30, duration: 0.4 });
+                        },
+                        onEnterBack: () => {
                             currentProjectTitle.textContent = projectData[projectId].title;
                             currentProjectDescription.textContent = projectData[projectId].description;
                             updateProjectLinks(projectId);
                             updateProjectSkills(projectId);
                             gsap.fromTo([currentProjectTitle, currentProjectDescription],
-                                { opacity: 0, y: 30 },
+                                { opacity: 0, y: -30 },
                                 { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" }
                             );
-                        }
-                    },
-                    onLeave: () => {
-                        hideProjectLinks();
-                        gsap.to([currentProjectTitle, currentProjectDescription], { opacity: 0, y: -30, duration: 0.4 });
-                    },
-                    onEnterBack: () => {
-                        currentProjectTitle.textContent = projectData[projectId].title;
-                        currentProjectDescription.textContent = projectData[projectId].description;
-                        updateProjectLinks(projectId);
-                        updateProjectSkills(projectId);
-                        gsap.fromTo([currentProjectTitle, currentProjectDescription],
-                            { opacity: 0, y: -30 },
-                            { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" }
-                        );
-                    },
-                    onLeaveBack: () => {
-                        if (projectId === 0) {
-                            hideProjectLinks();
-                            gsap.to([currentProjectTitle, currentProjectDescription], {
-                                opacity: 0, y: -30, duration: 0.4, onComplete: () => {
-                                    currentProjectTitle.textContent = "My Projects";
-                                    currentProjectDescription.textContent = "Innovative solutions and technical achievements showcasing expertise in full-stack development, system optimization, and collaborative engineering";
-                                    gsap.to([currentProjectTitle, currentProjectDescription], { opacity: 1, y: 0, duration: 0.4 });
-                                }
-                            });
+                        },
+                        onLeaveBack: () => {
+                            if (projectId === 0) {
+                                hideProjectLinks();
+                                gsap.to([currentProjectTitle, currentProjectDescription], {
+                                    opacity: 0, y: -30, duration: 0.4, onComplete: () => {
+                                        currentProjectTitle.textContent = "My Projects";
+                                        currentProjectDescription.textContent = "Innovative solutions and technical achievements showcasing expertise in full-stack development, system optimization, and collaborative engineering";
+                                        gsap.to([currentProjectTitle, currentProjectDescription], { opacity: 1, y: 0, duration: 0.4 });
+                                    }
+                                });
+                            }
                         }
                     }
-                }
+                });
+
+                tl.set(imageWrapper, {
+                    scale: 0.1,
+                    opacity: 0,
+                    x: () => gsap.utils.random(-window.innerWidth * 0.3, window.innerWidth * 0.3),
+                    y: () => gsap.utils.random(-window.innerHeight * 0.3, window.innerHeight * 0.3),
+                    rotation: gsap.utils.random(-45, 45),
+                    filter: "blur(10px)"
+                });
+
+                tl.set(content, {
+                    opacity: 0,
+                    y: 80,
+                    scale: 0.9
+                });
+
+                tl.to(imageWrapper, {
+                    scale: 1,
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    filter: "blur(0px)",
+                    ease: "power2.out",
+                    duration: 1.5
+                }, 0);
+
+                tl.to(content, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    ease: "power3.out",
+                    duration: 1.0
+                }, 0.3);
             });
 
-            tl.set(imageWrapper, {
-                scale: 0.1,
-                opacity: 0,
-                x: () => gsap.utils.random(-window.innerWidth * 0.3, window.innerWidth * 0.3),
-                y: () => gsap.utils.random(-window.innerHeight * 0.3, window.innerHeight * 0.3),
-                rotation: gsap.utils.random(-45, 45),
-                filter: "blur(10px)"
+            ScrollTrigger.create({
+                trigger: ".projects",
+                start: "top top",
+                end: "bottom bottom",
+                toggleClass: { targets: projectStickyHeader, className: "active-header" }
             });
-
-            tl.set(content, {
-                opacity: 0,
-                y: 80,
-                scale: 0.9
-            });
-
-            tl.to(imageWrapper, {
-                scale: 1,
-                opacity: 1,
-                x: 0,
-                y: 0,
-                rotation: 0,
-                filter: "blur(0px)",
-                ease: "power2.out",
-                duration: 1.5
-            }, 0);
-
-            tl.to(content, {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                ease: "power3.out",
-                duration: 1.0
-            }, 0.3);
-        });
-
-        ScrollTrigger.create({
-            trigger: ".projects",
-            start: "top top",
-            end: "bottom bottom",
-            toggleClass: { targets: projectStickyHeader, className: "active-header" }
-        });
 
             // Resume Download function
             window.downloadResume = function () {
@@ -2398,4 +2654,5 @@
         });
     </script>
 </body>
+
 </html>
